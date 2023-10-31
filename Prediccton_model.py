@@ -59,7 +59,7 @@ class Prediction_model:
             plt.figure().set_figwidth(15)
             plt.plot(x_plot, y_plot)
             plt.title('Number of iterations vs. Sum of error')
-            plt.xlabel('Number of iteracions')
+            plt.xlabel('Number of iterations')
             plt.ylabel('Mean of error')
             plt.show()
 

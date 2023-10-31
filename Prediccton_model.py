@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 class Prediction_model:
     def __init__(self, data_set: pd.DataFrame, dep_var: str, ind_vars: list[str]):
-        self.data_set = data_set
+        self.data_set = data_set[ind_vars + [dep_var]]
         self.dep_var = dep_var
         self.ind_vars = ind_vars
         self.weights: pd.Series[float] = None
@@ -43,9 +43,9 @@ class Prediction_model:
                 i += 1
                 
                 x_plot.append(i)
-                y_plot.append(sum(err))
+                y_plot.append(sum(abs(err)))
 
-                if (sum(err) < treshold or (not max_iter is None and max_iter <= i)):
+                if (sum(abs(err)) < treshold or (not max_iter is None and max_iter <= i)):
                     print("Number of iterations:", i)
                     break
                 

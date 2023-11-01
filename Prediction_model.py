@@ -64,6 +64,9 @@ class Prediction_model:
     '''
     def test_model(self, test_set: pd.DataFrame):
 
+        if not np.any(self.weights):
+            print("El modelo aún no ha sido entrenado. Entrenar el modelo antes de testear")
+            return
         y_test = test_set[self.dep_var]
         x_test = test_set[self.ind_vars]
 

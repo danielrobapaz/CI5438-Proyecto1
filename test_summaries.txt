@@ -1,0 +1,48 @@
+Primer Test: Variables del prosor
+    Valor máximo del error: 0.3238156133220703
+	Valor mínimo del error: -0.10166848210855882
+	Media del error: -0.0010153125785884805
+	Mediana del error: -0.002152674937319028
+	Suma total del error: -0.38074221697068017
+
+Segundo Test: Variables del Profesor - Manufacturantes:
+    Valor máximo del error: 0.37242489410752244
+	Valor mínimo del error: -0.07912330277932962
+	Media del error: 0.0002707108463564054
+	Mediana del error: -0.0011420232367890196
+	Suma total del error: 0.10151656738365201
+
+Tercer Test: Variables del profesor - Manufacturantes - Tipo de gasolina
+    Valor máximo del error: 0.37137191500290756
+	Valor mínimo del error: -0.07743753570937895
+	Media del error: 0.0003518434606235141
+	Mediana del error: -0.0014485726436839815
+	Suma total del error: 0.1319412977338178
+
+Cuarto Test: Variables del profesor - Manufacturantes - No. de dueños
+    Valor máximo del error: 0.3720040684846529
+	Valor mínimo del error: -0.08177145514587285
+	Media del error: 4.978055219327134e-05
+	Mediana del error: -0.0013467799734045577
+	Suma total del error: 0.018667707072476752
+
+Quinto test: Variables del profesor - No. de dueños - Tipo de gasolina.
+    Valor máximo del error: 0.325824428261438
+	Valor mínimo del error: -0.09290262249464154
+	Media del error: -0.0009460246558070475
+	Mediana del error: -0.00048284302983244744
+	Suma total del error: -0.3547592459276428
+
+## manufacturantes parecieran incidir en un aumento del error.
+## hasta ahora el mejor es el tercer test
+
+Sexto Test: Variables del tercer test - No. de Asientos + largo + ancho
+    Valor máximo del error: 0.3616238777385033
+	Valor mínimo del error: -0.08340210678555912
+	Media del error: 0.0012272021131095436
+	Mediana del error: -0.004462720618893247
+	Suma total del error: 0.4602007924160788
+
+## Largo y ancho, aunque correlacionados al precio, parecieran aumentar el error.
+
+##Por ahora el mejor es el tercer test buenas noches

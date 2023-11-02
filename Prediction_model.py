@@ -1,5 +1,4 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -10,7 +9,6 @@ class Prediction_model:
         self.ind_vars = ind_vars
         self.weights: pd.Series[float] = None
     
-
     
     '''
     Función que retorna el vector con los pesos de las variables independientes en un objeto 
@@ -43,17 +41,16 @@ class Prediction_model:
                 i += 1
                 
                 iter_num_plot.append(i)
-                err_plot.append(sum(abs(err)))
+                err_plot.append(np.mean(abs(err)))
 
-                if (sum(abs(err)) < treshold or (not max_iter is None and max_iter <= i)):
+                if (np.mean(abs(err)) < treshold or (not max_iter is None and max_iter <= i)):
                     print("Number of iterations:", i)
                     break
 
-            print(self.weights)
             plt.figure().set_figheight(10)
             plt.figure().set_figwidth(15)
             plt.plot(iter_num_plot, err_plot)
-            plt.title('Number of iterations vs. Sum of error')
+            plt.title('Number of iterations vs. Mean of error')
             plt.xlabel('Number of iterations')
             plt.ylabel('Mean of error')
             plt.show()

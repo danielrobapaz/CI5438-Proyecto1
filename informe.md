@@ -115,6 +115,57 @@ Posteriormente al particionamiento de los datos se hicieron varias corridas del 
 
 ## Conclusiones
 
-Al momento de escoger un modelo se optó por elegir aquel que tuviera una media de error de menor magnitud. En consecuencia de esto se presenta como hipótesis final aquella obtenida a partir de la ejecución del experimento 2, que contiene el conjunto de variables sugeridas por el enunciado y emplea completamiento de datos mediante inclusión de media y moda. Así para un vehículo *X* la hipótesis escogida da la siguiente ecuación para calcular una aproximación de su precio:
+Al momento de escoger un modelo se optó por elegir aquel que tuviera una media de error de menor magnitud. En consecuencia de esto se presenta como hipótesis final aquella obtenida a partir de la ejecución del experimento 2, que contiene el conjunto de variables sugeridas por el enunciado y emplea completamiento de datos mediante inclusión de media y moda. Para facilitar la legibilidad, en la siguiente tabla se muestran los coeficientes correspondientes a cada variable independiente en la hipótesis originada del modelo resultante del experimento 2:
 
-Price(X) = -0.01667 + $0.1032Year(X) - 0.0198Kilometer(X) + 0.1351FuelTankCap(X) - 0.0307SeatingCap(X) - 0.0141Manual(X) - 0.0025Automatic(X) - 0.009Petrol(X) - 0.0167Diesel(X) - 0.0143CNG(X) + 0.0008CNGPlusCNG(X) + 0.0031LPG(X) + 0.0263Hybrid(X) - 0.0007PetrolPlusCNG(X) - 0.02FirstOwner(X) - 0.0303SecondOwner(X) - 0.003ThirdOwner(X) + 0.0415UnRegistered(X) - 0.0297Honda(X) - 0.0313MarutiSuzuki(X) - 0.036Hyundai(X) - 0.0227Toyota(X) + 0.0256BMW(X) - 0.0312Skoda(X) - 0.0191Nissan(X) - 0.031Renault(X) - 0.0296Tata(X) - 0.0351Volkswagen(X) - 0.0242Ford(X) + 0.0228MercedesBenz(X) - 0.0119Audi(X) - 0.0341Mahindra(X) - 0.017MG(X) - 0.0201Jeep(X) + 0.0975Porsche(X) - 0.0226Kia(X) + 0.0807LandRover(X) + 0.0104Volvo(X) + 0.0134Maserati(X) + 0.0091Jaguar(X) - 0.0044Isuzu(X) + 0.008MINI(X) + 0.0Ferrari(X) - 0.0032Mitsubishi(X) - 0.0132Datsun(X) - 0.0172Chevrolet(X) - 0.0075Ssangyong(X) - 0.0046Fiat(X) + 0.1007RollsRoyce(X) + 0.0099Lexus(X)
+|Variable          |Coeficiente          |
+|------------------|---------------------|
+|Término Ind.      |-0.01667             |
+|Year              |0.10322951607224     |
+|Kilometer         |-0.0198414133221436  |
+|Fuel Tank Capacity|0.135100608036014    |
+|Seating Capacity  |-0.0307287188886536  |
+|Manual            |-0.0141267553256291  |
+|Automatic         |-0.00254336604548104 |
+|Petrol            |-0.00903824469501806 |
+|Diesel            |-0.0166857349996346  |
+|CNG               |-0.0142605487282244  |
+|CNG + CNG         |0.000763281892580848 |
+|LPG               |0.00308513496500433  |
+|Hybrid            |0.0262691044992729   |
+|Petrol + CNG      |-0.000665255010195871|
+|First             |-0.0199709114981087  |
+|Second            |-0.0303162982878992  |
+|Third             |-0.00297494448305441 |
+|UnRegistered Car  |0.0414894628047259   |
+|Honda             |-0.029745717617814   |
+|Maruti Suzuki     |-0.0312868066794956  |
+|Hyundai           |-0.036008347304129   |
+|Toyota            |-0.0227163347356961  |
+|BMW               |0.0256010613170309   |
+|Skoda             |-0.0311992686539649  |
+|Nissan            |-0.019076057718537   |
+|Renault           |-0.0310036958410967  |
+|Tata              |-0.0295613258922825  |
+|Volkswagen        |-0.0350624802735722  |
+|Ford              |-0.0241813714064751  |
+|Mercedes-Benz     |0.022795787295267    |
+|Audi              |-0.0118779566327994  |
+|Mahindra          |-0.034137357260063   |
+|MG                |-0.0170261547166387  |
+|Jeep              |-0.0201277384846687  |
+|Porsche           |0.0974557311382034   |
+|Kia               |-0.0226377038593539  |
+|Land Rover        |0.080661544960024    |
+|Volvo             |0.0104218811868576   |
+|Maserati          |0.0134060110932614   |
+|Jaguar            |0.00906949126431803  |
+|Isuzu             |-0.00441275413839045 |
+|MINI              |0.00797579237896356  |
+|Ferrari           |0                    |
+|Mitsubishi        |-0.00323017321966775 |
+|Datsun            |-0.013170628561697   |
+|Chevrolet         |-0.0172172240802316  |
+|Ssangyong         |-0.00745520002665654 |
+|Fiat              |-0.00459578315438114 |
+|Rolls-Royce       |0.100696458378839    |
+|Lexus             |0.0099323500684573   |

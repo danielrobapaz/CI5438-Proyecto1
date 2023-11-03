@@ -71,42 +71,48 @@ de los atributos y métodos de la clase:
 
 Para entrenar y probar el modelo se optó por un método de validación cruzada, donde el conjunto total de datos se separa en un conjunto de entrenamiento (En nuestro caso 80% de los datos) y un conjunto de pruebas (En nuestro caso el 20% restante). Para el particionamiento del modelo utilizamos a su vez la función *train_test_split* contenida en el paquete *sklearn* de Python.
 
-Posteriormente al particionamiento de los datos se hicieron varias corridas del algoritmo utilizando diferentes combinaciones de atributos en pro de encontrar la combinación que minimice las magnitudes del error. Cada uno de estos experimentos se encuentran en el *Jupyter Notebook* `testing.ipynb`. Para cada experimento se realizaron 3 lotes de ejecuciones distintos, con máximo de iteraciones de 50 mil, 70 mil, y 100 mil iteraciones respectivamente. Además para cada lote de ejecuciones se efectuaron 3 ejecuciones distintas en pro de verificar la consistencia del modelo. A continuación se presenta un resumen de los resultados obtenidos:
+Posteriormente al particionamiento de los datos se hicieron varias corridas del algoritmo utilizando diferentes combinaciones de atributos en pro de encontrar la combinación que minimice las magnitudes del error. Cada uno de estos experimentos se encuentran en el *Jupyter Notebook* `testing.ipynb`. Para cada experimento se realizaron 3 lotes de ejecuciones distintos, con máximo de iteraciones de 50 mil, 70 mil, y 100 mil iteraciones respectivamente. Además para cada lote de ejecuciones se efectuaron 3 ejecuciones distintas en pro de verificar la consistencia del modelo. Cabe destacar que entre distintas ejecuciones no se hicieron modificaciones a atributos como la tasa de aprendizaje, ni el delta mínimo de error, para todas las ejecuciones del algoritmo ambos valores se mantuvieron en sus valores por defecto de 0.001.
+
+ A continuación se presenta un resumen de los resultados obtenidos:
 
 ### Primera serie de ejecuciones: Max 50k iteraciones
 
 | Experimento | avg Maximo error | avg Minimo error | avg Media del error | avg Mediana del error | avg Suma total del error |
 | ----------- | ---------------- | ---------------- | ------------------- | --------------------- | ------------------------ |
 | 1           | 0,8737           | \-0,1083         | \-0,0025            | \-0,0032              | \-0,9391                 |
-| 2           | 0,8708           | \-0,0997         | 0,0029              | \-0,0029              | 0,3024                   |
+| 2           | 0,8708           | \-0,0997         | 0,0007              | \-0,0027              | 0,3024                   |
 | 3           | 0,8611           | \-0,1098         | \-0,0023            | \-0,0047              | \-0,8927                 |
-| 4           | 0,8597           | \-0,0955         | 0,0003              | \-0,0038              | 0,3583                   |
+| 4           | 0,8597           | \-0,0955         | 0,0009              | \-0,0038              | 0,3583                   |
 | 5           | 12,1486          | \-1,6908         | \-0,0308            | \-0,1007              | \-11,5680                |
-| 6           | 12,1681          | \-1,4836         | 0,0039              | \-0,0797              | 4,8386                   |
+| 6           | 12,1681          | \-1,4836         | 0,0117              | \-0,0797              | 4,8386                   |
 | 7           | 12,1412          | \-1,4726         | \-0,0304            | \-0,0924              | \-11,4124                |
 | 8           | 12,1616          | \-1,3541         | 0,0197              | \-0,0776              | 8,1364                   |
 | 9           | 0,8544           | \-0,0826         | \-0,0027            | \-0,0058              | \-1,0311                 |
 | 10          | 0,8556           | \-0,0844         | \-0,0028            | \-0,0058              | \-1,0849                 |
 | 11          | 0,8503           | \-0,0920         | \-0,0021            | \-0,0048              | \-0,8184                 |
 | 12          | 0,8740           | \-0,1139         | \-0,0023            | \-0,0027              | \-0,8457                 |
-| 13          | 0,8863           | \-0,0917         | \-0,0028            | \-0,0027              | \-1,0794                 |
+| 13          | 0,8863           | \-0,0917         | \-0,0028            | \-0,0082              | \-1,0794                 |
 
 
 ### Segunda serie de ejecuciones: Max 70k iteraciones
 | Experimento | avg Maximo error | avg Minimo error | avg Media del error | avg Mediana del error | avg Suma total del error |
 | ----------- | ---------------- | ---------------- | ------------------- | --------------------- | ------------------------ |
 | 1           | 0,8658           | \-0,1269         | \-0,0023            | \-0,0039              | \-0,9251                 |
-| 2           | 0,8626           | \-0,0998         | 0,0008              | \-0,0038              | 0,1166                   |
+| 2           | 0,8626           | \-0,0998         | 0,0008              | \-0,0038              | 0,3498                   |
 | 3           | 0,8562           | \-0,1201         | \-0,0022            | \-0,0041              | \-0,8556                 |
-| 4           | 0,8542           | \-0,0950         | 0,0003              | \-0,0041              | 0,1495                   |
+| 4           | 0,8542           | \-0,0950         | 0,0011              | \-0,0041              | 0,4485                   |
 | 5           | 12,1868          | \-1,8768         | \-0,0300            | \-0,1075              | \-11,2789                |
 | 6           | 12,2068          | \-1,4571         | 0,0134              | \-0,0779              | 5,5472                   |
-| 7           | 12,1772          | \-1,6704         | \-0,0292            | \-0,0696              | \-10,9540                |
-| 8           | 12,1867          | \-1,0091         | 0,0218              | \-0,0659              | 9,0107                   |
+| 7           | 12,1772          | \-1,6704         | \-0,0292            | \-0,0898              | \-10,9540                |
+| 8           | 12,1867          | \-1,3242         | 0,0218              | \-0,0659              | 9,0107                   |
 | 9           | 0,8422           | \-0,0818         | \-0,0027            | \-0,0067              | \-1,0443                 |
 | 10          | 0,8444           | \-0,0841         | \-0,0029            | \-0,0062              | \-1,1052                 |
-| 11          | 0,8375           | \-0,0906         | \-0,0021            | \-0,0052              | \-0,7916                 |
+| 11          | 0,8375           | \-0,0906         | \-0,0021            | \-0,0062              | \-0,7916                 |
 | 12          | 0,8656           | \-0,1261         | \-0,0020            | \-0,0024              | \-0,7709                 |
-| 13          | 0,2951           | \-0,0894         | \-0,0032            | \-0,0087              | \-1,0890                 |
+| 13          | 0,8855           | \-0,0894         | \-0,0029            | \-0,0087              | \-1,0890                 |
 
 ### Tercera serie de ejeciciones: Max 100k iteraciones (Por hacer)
+
+## Conclusiones
+
+Al momento de escoger un modelo se optó por elegir aquel que tuviera una media de error de menor magnitud. En consecuencia de estos los modelos generados en los experimentos 2 y 4 parecieran ser los mejores candidatos para una posible hipótesis final; con el experimento número 2 teniendo una media de error ligeramente más baja que el experimento 4, pero teniendo máximos de error ligeramente más altos.

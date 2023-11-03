@@ -59,7 +59,7 @@ de los atributos y métodos de la clase:
 
 ### Métodos
 
-* train_model: Recibe la tasa de aprendizaje, el límite de error y el número máximo de iteraciones y actualiza los pesos del modelo tras ejecutar la regresión lineal con descenso de gradiente. Posteriormente muestra en una gráfica la evolución de la media del error en función del número de iteraciones efectuadas.
+* train_model: Recibe la tasa de aprendizaje, el límite de error y el número máximo de iteraciones y actualiza los pesos del modelo tras ejecutar la regresión lineal con descenso de gradiente. Posteriormente muestra en una gráfica la evolución de la media del error en función del número de iteraciones efectuadas. Por defecto tanto la tasa de aprendizaje como el delta mínimo de error tienen un valor de 0.001
 * test_model: Recibe un dataframe de pandas con el conjunto de prueba contra el cual se va a evaluar el modelo, e imprime en pantalla un resumen estadístico de los errores obtenidos, incluyendo valor máximo, valor mínimo, media y mediana del error, y la suma total de los errores.
 
 ### Detalles misceláneos

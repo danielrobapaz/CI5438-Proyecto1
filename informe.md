@@ -43,7 +43,7 @@ valores posibles de la variable original. Así si el dato *k* pertence a la cate
 a la categoría *X* y 0 en caso contrario.
 * En el caso de datos con valores faltantes, se creó una versión del dataset donde estos datos son removidos completamente y otra donde los valores faltantes
 fueron sustituidos con la media en el caso de las variables cuantitativas, y con la moda en el caso de las variables categóricas.
-* Se efectuó una normalización de todos los valores en pro de llevar todos los datos a una misma escala común.
+* Por ultimo, hay variables, que por su naturaleza, tienen magnitudes muy grandes. Un ejemplo es la variable Price y Kilometer. Para manejar estos valores, se aplicaron dos tipos de normalizacion. La primera es la sugerida y la ultima en donde aplicamos el z-score
 
 ## Implementación del algoritmo
 
@@ -71,7 +71,23 @@ de los atributos y métodos de la clase:
 
 Para entrenar y probar el modelo se optó por un método de validación cruzada, donde el conjunto total de datos se separa en un conjunto de entrenamiento (En nuestro caso 80% de los datos) y un conjunto de pruebas (En nuestro caso el 20% restante). Para el particionamiento del modelo utilizamos a su vez la función *train_test_split* contenida en el paquete *sklearn* de Python.
 
-Posteriormente al particionamiento de los datos se hicieron varias corridas del algoritmo utilizando diferentes combinaciones de atributos en pro de encontrar la combinación que minimice las magnitudes del error. Cada uno de estos experimentos se encuentran en el *Jupyter Notebook* `testing.ipynb`. Para cada experimento se realizaron 3 lotes de ejecuciones distintos, con máximo de iteraciones de 50 mil, 70 mil, y 100 mil iteraciones respectivamente. Además para cada lote de ejecuciones se efectuaron 3 ejecuciones distintas en pro de verificar la consistencia del modelo. Cabe destacar que entre distintas ejecuciones no se hicieron modificaciones a atributos como la tasa de aprendizaje, ni el delta mínimo de error, para todas las ejecuciones del algoritmo ambos valores se mantuvieron en sus valores por defecto de 0.001.
+Posteriormente al particionamiento de los datos se hicieron varias corridas del algoritmo utilizando diferentes combinaciones de atributos y métodos de normalización en pro de encontrar la combinación que minimice las magnitudes del error. A continuación se presenta el listado de experimentos realizados:
+
+* Experimento 1: Usando las variables sugeridas, usando el conjunto de datos con nulos eliminados y aplicando la normalizacion sugerida.
+* Experimento 2: Usando las variables sugeridas, usando el conjunto de datos rellenando los nulos y aplicando la normalizacion sugerida.
+* Experimento 3: Usando las variables sugerdas agregando Length y Width, usando el conjunto de datos con nulos eliminados y aplicando la normalizacion sugerida.
+* Experimento 4: Usando las variables sugeridas agregando Length y Width, usando el conjunto de datos con nulos rellenados y aplicando la normaliazcion sugerida.
+* Experimento 5: Experimento 1 aplicando la normalizacion del z-score.
+* Experimento 6: Experimento 2 aplicando la normalizacion del z-score
+* Experimento 7: Experimento 3 aplicando la normalizacion del z-score
+* Experimento 8: Experimento 4 aplicando la normalizacion del z-score
+* Experimento 9: Usando las variables sugeridas excluyendo Make, con el conjunto de datos con nulos eliminados y aplicando la normalizacion sugerida.
+* Experimento 10: Usando las variables sugeridas excluyendo Make y Fuel Type, con el conjunto de datos con nulos eliminados y apicando la normalizacion sugerida.
+* Experimento 11: Usando las variables sugeridas excluyendo Make y Owner, con el conjunto de datos con nulos eliminados y aplicando la normalizacion sugerida.
+* Experimento 12: Usando las variables sugeridas excluyendo Owner y Fuel Type, con el conjunto de datos con nulos eliminados y aplicando la normalizacion sugerida.
+* Experimento 13: Usando las variables sugeridas excluyendo Make, Fuel Type, Seating Capacity e incluyendo Length y Width, con el conjunto de datos con nulos eliminados y aplicando la normalizacion sugerida
+
+Cada uno de los experimentos listados se ejecutó en 3 modalidades distintas variando el número de iteraciones máximas permitidas. Así para cada experimento se efectuó una primera corrida con un máximo de 50 mil iteraciones, una segunda corrida con un máximo de 70 mil iteraciones, y una última corrida con un máximo de 100 mil iteraciones. Para cada una de estas modalidades cada experimento se ejecutó 3 veces, con el fin de validar la consistencia de los resultados.
 
  A continuación se presenta un resumen de los resultados obtenidos:
 
@@ -111,11 +127,27 @@ Posteriormente al particionamiento de los datos se hicieron varias corridas del 
 | 12          | 0,8656           | \-0,1261         | \-0,0020            | \-0,0024              | \-0,7709                 |
 | 13          | 0,8855           | \-0,0894         | \-0,0029            | \-0,0087              | \-1,0890                 |
 
-### Tercera serie de ejeciciones: Max 100k iteraciones (Por hacer)
+### Tercera serie de ejeciciones: Max 100k iteraciones
+
+| Experimento | avg Maximo error | avg Minimo error | avg Media del error | avg Mediana del error | avg Suma total del error |
+| ----------- | ---------------- | ---------------- | ------------------- | --------------------- | ------------------------ |
+| 1           | 0,8587           | \-0,1476666667   | \-0,0022            | \-0,0045              | \-0,8467                 |
+| 2           | 0,8553           | \-0.0995         | 0,0009              | \-0,0042              | 0,4068                   |
+| 3           | 0,8527           | \-0,1352         | \-0,0021            | \-0,0039              | \-0,8154                 |
+| 4           | 0,8500666667     | \-0,09253333333  | 0,0004              | \-0,0046              | 0,1824                   |
+| 5           | 12,2315          | \-2,0896         | \-0,0203            | \-0,3968666667        | \-10,9084                |
+| 6           | 12,2419          | \-1,4307         | 0,01535333333       | \-0,0745              | 6,413566667              |
+| 7           | 12,2136          | \-1,8953         | \-0,04373333333     | \-0,08463333333       | \-10,38553333            |
+| 8           | 12,2292          | \-1,329466667    | 0,008036666667      | \-0,0594              | 9,9338                   |
+| 9           | 0,8316           | \-0,08411        | \-0,0045            | \-0,0065              | \-3477,6954              |
+| 10          | 0,8348           | \-0,0845         | \-0,003233333333    | \-0,0069              | \-1,1145                 |
+| 11          | 0,826            | \-0,0921         | \-0,002             | \-0,0063              | \-0,7682666667           |
+| 12          | 0,8581           | \-0,1477         | \-0,0018            | \-0,0026              | \-0,6976666667           |
+| 13          | 0,8845           | \-0,06036666667  | \-0,0029            | \-0,0092              | \-1,0894                 |
 
 ## Conclusiones
 
-Al momento de escoger un modelo se optó por elegir aquel que tuviera una media de error de menor magnitud. En consecuencia de esto se presenta como hipótesis final aquella obtenida a partir de la ejecución del experimento 2, que contiene el conjunto de variables sugeridas por el enunciado y emplea completamiento de datos mediante inclusión de media y moda. Para facilitar la legibilidad, en la siguiente tabla se muestran los coeficientes correspondientes a cada variable independiente en la hipótesis originada del modelo resultante del experimento 2:
+Al momento de escoger un modelo se optó por elegir aquel que tuviera una media de error de menor magnitud. En consecuencia de esto se presenta como hipótesis final aquella obtenida a partir de la ejecución del experimento 2, que contiene el conjunto de variables sugeridas por el enunciado y emplea completamiento de datos mediante inclusión de media y moda. Para facilitar la legibilidad, en la siguiente tabla se muestran los coeficientes correspondientes a cada variable independiente en la hipótesis originada del modelo resultante del experimento 2 con un límite de iteraciones de 70 mil:
 
 |Variable          |Coeficiente          |
 |------------------|---------------------|
